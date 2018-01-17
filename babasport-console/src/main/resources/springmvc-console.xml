@@ -29,4 +29,6 @@
 			<property name="prefix" value="/WEB-INF/console/"></property>
 			<property name="suffix" value=".jsp"></property>
 		</bean>
+		
+		<import resource="dubbo-consumer.xml"/>
 </beans>

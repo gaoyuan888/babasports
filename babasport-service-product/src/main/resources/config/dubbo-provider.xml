@@ -34,4 +34,5 @@
 		
 		<!-- 4.暴漏实现类 -->
 		<dubbo:service interface="gaoyuan.core.service.TestTbService" ref="testTbService"/>
+		<dubbo:service interface="gaoyuan.core.service.product.BrandService" ref="brandService"/>
 </beans>

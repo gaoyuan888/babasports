@@ -20,7 +20,7 @@
 		
 		<!-- double提供方 -->
 		<!-- 1.计算机名称区别，唯一 -->
-		<dubbo:application name="babasport-consumer"/>
+		<dubbo:application name="babasport-console"/>
 		<!-- 2.设置注册中心的地址即 zookeeper在哪里 -->
 <!-- 		<dubbo:registry address="192.168.200.128:2181" protocol="zookeeper"></dubbo:registry> -->
             <!-- 不注册 -->
@@ -28,14 +28,23 @@
 		    <!-- 集群版 -->
 <!-- 		<dubbo:registry address="192.168.200.128:2181,192.168.200.128:2181" protocol="zookeeper"></dubbo:registry> -->
 		<!-- 4.调用此接口对应的实现类,单位毫秒 -->
-		<dubbo:reference interface="gaoyuan.core.service.TestTbService" id="testTbService"
-			url="dubbo://127.0.0.1:20880"
+		<dubbo:reference 
+		    interface="gaoyuan.core.service.TestTbService" 
+		    id="testTbService"
+			url="dubbo://127.0.0.1:20880/gaoyuan.core.service.TestTbService"
 		/>
-		<dubbo:reference interface="gaoyuan.core.service.product.BrandService" id="brandService"
-			url="dubbo://127.0.0.1:20880"
+		<dubbo:reference 
+		    interface="gaoyuan.core.service.product.BrandService" 
+		    id="brandService"
+			url="dubbo://127.0.0.1:20880/gaoyuan.core.service.product.BrandService"
+		/>
+		<dubbo:reference 
+		    interface="gaoyuan.core.service.product.UploadService" 
+		    id="uploadService"
+			url="dubbo://127.0.0.1:20880/gaoyuan.core.service.product.UploadService"
 		/>
 		<!-- 全局设置 -->
-		<dubbo:consumer timeout="600000" check="false"></dubbo:consumer>
+		<dubbo:consumer timeout="12000"  check="false"/>
 		
-<!-- 		<dubbo:service interface="gaoyuan.core.service.TestTbService" ref="testTbService"/> -->
+		
 </beans>

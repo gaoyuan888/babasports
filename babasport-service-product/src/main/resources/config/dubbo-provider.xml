@@ -22,17 +22,19 @@
 		<!-- 1.计算机名称区别，唯一 -->
 		<dubbo:application name="babasport-service-product"/>
 		
-		<!-- 2.设置注册中心的地址即 zookeeper在哪里 redis... -->
+<!-- 		2.设置注册中心的地址即 zookeeper在哪里 redis... -->
 <!-- 		<dubbo:registry address="192.168.200.128:2181" protocol="zookeeper"/> -->
-		    <!-- 集群版 -->
-<!-- 		<dubbo:registry address="192.168.200.128:2181,192.168.200.128:2181" protocol="zookeeper"></dubbo:registry> -->
+<!-- 		    集群版 -->
+<!-- 		<dubbo:registry address="192.168.200.128:2181,192.168.200.128:2181" protocol="zookeeper"/> -->
         <!-- 不注册 -->
 		<dubbo:registry address="N/A"/>
 		
 		<!-- 3.dubbo://192.168.80.133:20880  设置对外提供服务的端口号 -->
-		<dubbo:protocol port="20880"></dubbo:protocol>
+		<dubbo:protocol port="20880" name="dubbo"/>
 		
 		<!-- 4.暴漏实现类 -->
 		<dubbo:service interface="gaoyuan.core.service.TestTbService" ref="testTbService"/>
 		<dubbo:service interface="gaoyuan.core.service.product.BrandService" ref="brandService"/>
+		<dubbo:service interface="gaoyuan.core.service.product.UploadService" ref="uploadService"/>
+		
 </beans>

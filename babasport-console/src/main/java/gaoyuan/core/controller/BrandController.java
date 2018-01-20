@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.itcast.common.page.Pagination;
+import gaoyuan.core.bean.product.Brand;
 import gaoyuan.core.service.product.BrandService;
 
 /**
@@ -34,5 +35,12 @@ public class BrandController {
 			 model.addAttribute("isDisplay",1);
 		 }
 		return "brand/list";
+	}
+	//去修改页面
+	@RequestMapping(value="/brand/toEdit.do")
+	public String toEdit(Long id,Model model){
+		Brand brand = brandService.selectBrandById(id);
+		model.addAttribute("brand",brand);
+		return "brand/edit";
 	}
 }

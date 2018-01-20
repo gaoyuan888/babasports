@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.itcast.common.page.Pagination;
+import gaoyuan.core.bean.product.Brand;
 import gaoyuan.core.bean.product.BrandQuery;
 import gaoyuan.core.dao.product.BrandDao;
 
@@ -27,15 +28,19 @@ public class BrandServiceImpl implements BrandService{
 		//当前页
 		brandQuery.setPageNo(Pagination.cpn(pageNo));
 		//每页数
-		brandQuery.setPageSize(3);
+		brandQuery.setPageSize(1);
 		//条件
+		StringBuilder params=new StringBuilder();
 		if(null!=name){
 			brandQuery.setName(name);
+			params.append("name=").append(name);
 		}
 		if(null!=isDisplay){
 			brandQuery.setIsDisplay(isDisplay);
+			params.append("&isDisplay=").append(isDisplay);
 		}else{
 			brandQuery.setIsDisplay(1);
+			params.append("&isDisplay=").append(1);
 		}
 		Pagination pagination=new Pagination(
 				brandQuery.getPageNo(),
@@ -43,6 +48,15 @@ public class BrandServiceImpl implements BrandService{
 				brandDao.selectCount(brandQuery)
 				);
 		pagination.setList(brandDao.selectBrandListByQuery(brandQuery));
+		String url="/brand/list.do";
+		
+		pagination.pageView(url, params.toString());
+		
 		return pagination;
+	}
+
+	@Override
+	public Brand selectBrandById(Long id) {
+		return brandDao.selectBrandById(id);
 	} 
 }

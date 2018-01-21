@@ -43,4 +43,15 @@ public class BrandController {
 		model.addAttribute("brand",brand);
 		return "brand/edit";
 	}
+	//去修改页面
+	@RequestMapping(value="/brand/edit.do")
+	public String edit(Brand brand){
+	    brandService.updateBrandById(brand);
+		return "redirect:/brand/list.do";
+	}
+	@RequestMapping(value="/brand/deletes.do")
+	public String deletes(Long[] ids){
+		brandService.deletes(ids);
+		return "forward:/brand/list.do";
+	}
 }

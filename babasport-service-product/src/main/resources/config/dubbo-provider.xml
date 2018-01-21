@@ -36,5 +36,6 @@
 		<dubbo:service interface="gaoyuan.core.service.TestTbService" ref="testTbService"/>
 		<dubbo:service interface="gaoyuan.core.service.product.BrandService" ref="brandService"/>
 		<dubbo:service interface="gaoyuan.core.service.product.UploadService" ref="uploadService"/>
+		<dubbo:service interface="gaoyuan.core.service.product.ProductService" ref="productService"/>
 		
 </beans>

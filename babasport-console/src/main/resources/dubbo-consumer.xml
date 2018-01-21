@@ -43,6 +43,11 @@
 		    id="uploadService"
 			url="dubbo://127.0.0.1:20880/gaoyuan.core.service.product.UploadService"
 		/>
+		<dubbo:reference 
+		    interface="gaoyuan.core.service.product.ProductService" 
+		    id="productService"
+			url="dubbo://127.0.0.1:20880/gaoyuan.core.service.product.ProductService"
+		/>
 		<!-- 全局设置 -->
 		<dubbo:consumer timeout="12000"  check="false"/>
 		

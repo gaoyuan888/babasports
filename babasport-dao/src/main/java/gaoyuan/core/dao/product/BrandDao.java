@@ -12,4 +12,9 @@ public interface BrandDao {
 	public Integer selectCount(BrandQuery brandQuery);
 	//通过ID查询品牌
 	public Brand selectBrandById(long id);
+	
+	//修改
+	public void updateBrandById(Brand brand);
+	//删除
+	public void deletes(Long[] ids);
 }

@@ -1,5 +1,7 @@
 package gaoyuan.core.service.product;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +30,7 @@ public class BrandServiceImpl implements BrandService{
 		//当前页
 		brandQuery.setPageNo(Pagination.cpn(pageNo));
 		//每页数
-		brandQuery.setPageSize(1);
+		brandQuery.setPageSize(2);
 		//条件
 		StringBuilder params=new StringBuilder();
 		if(null!=name){
@@ -39,7 +41,7 @@ public class BrandServiceImpl implements BrandService{
 			brandQuery.setIsDisplay(isDisplay);
 			params.append("&isDisplay=").append(isDisplay);
 		}else{
-			brandQuery.setIsDisplay(1);
+			brandQuery.setIsDisplay(5);
 			params.append("&isDisplay=").append(1);
 		}
 		Pagination pagination=new Pagination(
@@ -59,4 +61,20 @@ public class BrandServiceImpl implements BrandService{
 	public Brand selectBrandById(Long id) {
 		return brandDao.selectBrandById(id);
 	} 
+	@Override
+	public void updateBrandById(Brand brand) {
+		 brandDao.updateBrandById(brand);
+	} 
+	
+	//删除
+	public void deletes(Long[] ids){
+		brandDao.deletes(ids);
+	}
+
+	@Override
+	public List<Brand> selectBrandListByQuery(Integer isDisplay) {
+		BrandQuery query=new BrandQuery();
+		query.setIsDisplay(isDisplay);
+		return brandDao.selectBrandListByQuery(query);
+	}
 }
